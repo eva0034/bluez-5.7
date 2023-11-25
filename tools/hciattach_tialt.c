@@ -139,7 +139,7 @@ static int texas_load_firmware(int fd, const char *firmware) {
 			iov_cmd[0].iov_len	= sizeof(cmdp);
 			iov_cmd[1].iov_base = data;
 			iov_cmd[1].iov_len	= cmd->plen;
-			nw = writev(fd, iov_cmd, 2);
+			nw = write(fd, iov_cmd, 2);
 			FAILIF(nw != (int) sizeof(cmd) +	cmd->plen,
 				   "Could not send entire command (sent only %d bytes)!\n",
 				   nw);
